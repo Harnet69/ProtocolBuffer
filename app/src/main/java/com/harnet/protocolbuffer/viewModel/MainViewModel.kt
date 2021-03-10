@@ -12,7 +12,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     //create repository
     private val repository = ProtoRepository(application)
 
-    val firstName = repository.readProto.asLiveData()
+    val mFirstName = repository.readProto.asLiveData()
 
     fun updateFirstName(newFirstName: String) = viewModelScope.launch(Dispatchers.IO) {
         repository.updatePersonFirstName(newFirstName)
