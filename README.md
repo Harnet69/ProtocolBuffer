@@ -1,5 +1,6 @@
-#Protocol buffers 
-   Designed by Google for storing and interchanging all kinds of information
+#Protocol buffers
+
+Designed by Google for storing and interchanging all kinds of information
 Protocol buffers are Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data – think XML, but smaller, faster, and simpler
 https://developer.android.com/codelabs/android-proto-datastore#0 / https://developers.google.com/protocol-buffers/docs/proto3
    Serialization - a process of translating a data structure or object state to a format in which it can be stored(file or memory dataBuffer) 
@@ -56,7 +57,6 @@ Proto data:
             }
         }
     }
-}
 ```
 - rebuild project to renerate files
 - create a MySerializer class which extend Serializer and implement ita members
@@ -106,7 +106,6 @@ Proto data:
             preference.toBuilder().setFirstName(firstName).build()
         }
     }
- }
 ```
 - create ViewModel which extends AndroidViewModel
 ```kotlin
