@@ -10,7 +10,7 @@ Proto data:
 - install to Android studio Protocol Buffer Editor plugin
 - create a folder with name "proto" in main directory(switch on project mode) define proto buf scheme in a filename.proto file
 - instead creating a model class in kotlin we define it in protobuf scheme instead
-	```kotlin
+```kotlin
   syntax = "proto3";
 
 	//tels to a compiler where generate protocol buffer classes
@@ -24,21 +24,21 @@ Proto data:
   	   string lastName = 2;
   	   int32 age = 3;
 	}
-  ```
+```
 - on gradle build file(app) 
    - in plugins add: 
-      ```kotlin
+```kotlin
       id 'com.google.protobuf' version '0.8.12'
-      ```
+```
    - in dependencies add:
-   ```
+```kotlin
     //Proto DataStore
     implementation  "androidx.datastore:datastore-core:1.0.0-alpha04"
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha04"
     implementation  "com.google.protobuf:protobuf-javalite:3.10.0"
-   ```
+```
    - below dependencies add:
-    ```
+```kotlin
     protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:3.10.0"
@@ -60,7 +60,7 @@ Proto data:
 ```
 - rebuild project to renerate files
 - create a MySerializer class which extend Serializer and implement ita members
-```
+```kotlin
   // define how read and write an object to a data store
 	class MySerializer: Serializer<Person> {
 		//it will be used if there is no file created yet
@@ -81,6 +81,7 @@ Proto data:
 	}
 ```
 - create a ProtoRepository class
+```kotlin
 	class ProtoRepository(context: Context) {
     private val dataStore: DataStore<Person> = context.createDataStore(
             "my_data",
@@ -106,9 +107,10 @@ Proto data:
         }
     }
  }
- 
+```
 - create ViewModel which extends AndroidViewModel
-  class MainViewModel(application: Application) : AndroidViewModel(application) {
+```kotlin
+ class MainViewModel(application: Application) : AndroidViewModel(application) {
     //create repository
     private val repository = ProtoRepository(application)
 
@@ -119,8 +121,9 @@ Proto data:
     }
 
  }
- 
+```
 - add to Fragment
+```kotlin
   private fun observeViewModel() {
     viewModel.mFirstName.observe(viewLifecycleOwner, { person ->
             view?.findViewById<TextView>(R.id.saved_text)?.text = person.firstName
@@ -137,6 +140,4 @@ Proto data:
             }
         }
     }
-   
-  
-	
+```
